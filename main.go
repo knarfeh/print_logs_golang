@@ -7,25 +7,40 @@ import (
 )
 
 func loop(done chan bool) {
-	for i := 0; i < 25000; i++ {
-		fmt.Printf("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
+	for i := 0; i < 2500; i++ {
+		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
+		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
+		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
+		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
+		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
+		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
+		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
+		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
+		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
+		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
+
 	}
 	done <- true
 }
 
 func main() {
-	t1 := time.Now()
-	runtime.GOMAXPROCS(4)
-	done := make(chan bool)
-	go loop(done)
-	go loop(done)
-	go loop(done)
-	go loop(done)
+	for {
+		t1 := time.Now()
+		runtime.GOMAXPROCS(runtime.NumCPU())
+		done := make(chan bool)
+		go loop(done)
+		go loop(done)
+		go loop(done)
+		go loop(done)
 
-	<-done
-	<-done
-	<-done
-	<-done
-	t2 := time.Now()
-	fmt.Println("time span: ", t2.Sub(t1))
+		<-done
+		<-done
+		<-done
+		<-done
+		t2 := time.Now()
+		fmt.Println("time span: ", t2.Sub(t1))
+
+		time.Sleep(5 * time.Second)
+	}
+
 }
