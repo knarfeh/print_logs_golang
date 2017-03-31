@@ -2,12 +2,15 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"runtime"
+	"strconv"
 	"time"
 )
 
 func loop(done chan bool) {
-	for i := 0; i < 2500; i++ {
+	printCount := getEnvInt("PRINT_COUNT", 2500)
+	for i := 0; i < printCount; i++ {
 		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
 		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
 		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
@@ -21,6 +24,25 @@ func loop(done chan bool) {
 
 	}
 	done <- true
+}
+
+// getEnv get an environment key as string, returns the default if not found
+func getEnv(key string, defaultVal string) string {
+	value := os.Getenv(key)
+	if value == "" {
+		value = defaultVal
+	}
+	return value
+}
+
+// getEnvInt get an env key as int, returns the default if note found
+func getEnvInt(key string, defaultVal int) int {
+	valueStr := getEnv(key, strconv.Itoa(defaultVal))
+	res, err := strconv.Atoi(valueStr)
+	if err != nil {
+		res = defaultVal
+	}
+	return res
 }
 
 func main() {
@@ -42,5 +64,4 @@ func main() {
 
 		time.Sleep(5 * time.Second)
 	}
-
 }
