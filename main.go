@@ -52,16 +52,12 @@ func main() {
 		done := make(chan bool)
 		go loop(done)
 		go loop(done)
-		go loop(done)
-		go loop(done)
 
-		<-done
-		<-done
 		<-done
 		<-done
 		t2 := time.Now()
 		fmt.Println("time span: ", t2.Sub(t1))
 
-		time.Sleep(5 * time.Second)
+		time.Sleep(10 * time.Second)
 	}
 }
