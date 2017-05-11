@@ -9,19 +9,19 @@ import (
 )
 
 func loop(done chan bool) {
-	printCount := getEnvInt("PRINT_COUNT", 2500)
+	printCount := getEnvInt("PRINT_COUNT", 1)
+	printContent := getEnv("PRINT_CONTENT", "balabalabalabalabalabalabalabalabalabalabalabalabala")
 	for i := 0; i < printCount; i++ {
-		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
-		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
-		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
-		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
-		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
-		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
-		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
-		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
-		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
-		fmt.Print("balabalabalabalabalabalabalabalabalabalabalabalabala\n")
-
+		fmt.Println(printContent)
+		fmt.Println(printContent)
+		fmt.Println(printContent)
+		fmt.Println(printContent)
+		fmt.Println(printContent)
+		fmt.Println(printContent)
+		fmt.Println(printContent)
+		fmt.Println(printContent)
+		fmt.Println(printContent)
+		fmt.Println(printContent)
 	}
 	done <- true
 }
