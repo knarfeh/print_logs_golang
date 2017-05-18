@@ -5,4 +5,4 @@ WORKDIR $GOPATH/src/github.com/knarfeh/print_logs_golang
 ADD . $GOPATH/src/github.com/knarfeh/print_logs_golang
 RUN go build .
 
-CMD ["./start.sh"]
+CMD ["./$GOPATH/src/github.com/knarfeh/print_logs_golang/start.sh"]
